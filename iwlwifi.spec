@@ -39,7 +39,7 @@ Requires:	iwlwifi-3945-ucode
 Requires(post,postun):	/sbin/depmod
 Requires:	module-init-tools >= 3.2.2-2
 
-%description -n kernel%{_alt_kernel}-net-%{name}
+%description -n kernel%{_alt_kernel}-net-iwl3945
 This package contains Linux kernel drivers for the IntelÂ
 PRO/Wireles 3945ABG Network Connection.
 
@@ -54,7 +54,7 @@ Requires:	iwlwifi-4965-ucode
 Requires(post,postun):	/sbin/depmod
 Requires:	module-init-tools >= 3.2.2-2
 
-%description -n kernel%{_alt_kernel}-net-%{name}
+%description -n kernel%{_alt_kernel}-net-iwl4965
 This package contains Linux kernel drivers for the IntelÂ® Wireless WiFi
 Link 4965AGN.
 
@@ -62,8 +62,8 @@ Link 4965AGN.
 %setup -q
 
 %build
-%build_kernel_modules -m iwl3945
-%build_kernel_modules -m iwl4965
+%build_kernel_modules -m iwl3945 -p SHELL=/bin/bash
+%build_kernel_modules -m iwl4965 -p SHELL=/bin/bash
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -73,10 +73,16 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-n kernel%{_alt_kernel}-net-%{name}
+%post	-n kernel%{_alt_kernel}-net-iwl3945
 %depmod %{_kernel_ver}
 
-%postun	-n kernel%{_alt_kernel}-net-%{name}
+%postun	-n kernel%{_alt_kernel}-net-iwl3945
+%depmod %{_kernel_ver}
+
+%post	-n kernel%{_alt_kernel}-net-iwl4965
+%depmod %{_kernel_ver}
+
+%postun	-n kernel%{_alt_kernel}-net-iwl4965
 %depmod %{_kernel_ver}
 
 %files -n kernel%{_alt_kernel}-net-iwl3945
