@@ -2,7 +2,7 @@
 %bcond_without	dist_kernel	# allow non-distribution kernel
 %bcond_with	verbose		# verbose build (V=1)
 #
-%define		_rel	0.2
+%define		_rel	0.3
 %define		_mod_suffix	current
 Summary:	Intel® Wireless WiFi Link 4965AGN and Intel® PRO/Wireless 3945ABG Network Connection
 Name:		iwlwifi
@@ -34,7 +34,6 @@ Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
 Requires:	iwlwifi-3945-ucode
-#%(rpm -q --qf 'Requires: kernel%{_alt_kernel}-net-ieee80211 = %%{epoch}:%%{version}-%%{release}\n' ieee80211-devel | sed -e 's/ (none):/ /' | grep -v "is not")
 %{?with_dist_kerqnel:%requires_releq_kernel}
 Requires(post,postun):	/sbin/depmod
 Requires:	module-init-tools >= 3.2.2-2
@@ -49,7 +48,6 @@ Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
 Requires:	iwlwifi-4965-ucode
-#%(rpm -q --qf 'Requires: kernel%{_alt_kernel}-net-ieee80211 = %%{epoch}:%%{version}-%%{release}\n' ieee80211-devel | sed -e 's/ (none):/ /' | grep -v "is not")
 %{?with_dist_kernel:%requires_releq_kernel}
 Requires(post,postun):	/sbin/depmod
 Requires:	module-init-tools >= 3.2.2-2
@@ -62,8 +60,7 @@ Link 4965AGN.
 %setup -q
 
 %build
-%build_kernel_modules -m iwl3945 -p SHELL=/bin/bash
-%build_kernel_modules -m iwl4965 -p SHELL=/bin/bash
+%build_kernel_modules -m iwl3945,iwl4965 -p SHELL=/bin/bash
 
 %install
 rm -rf $RPM_BUILD_ROOT
