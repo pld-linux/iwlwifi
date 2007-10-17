@@ -3,7 +3,7 @@
 %bcond_without	kernel		# don't build kernel modules
 %bcond_with	verbose		# verbose build (V=1)
 #
-%define		_rel	0.5
+%define		_rel	1
 Summary:	Intel® Wireless WiFi Link 4965AGN and Intel® PRO/Wireless 3945ABG Network Connection
 Name:		iwlwifi
 Version:	1.1.17
@@ -13,7 +13,7 @@ Group:		Base/Kernel
 Source0:	http://www.intellinuxwireless.org/iwlwifi/downloads/%{name}-%{version}.tgz
 # Source0-md5:	8c0ab70d569ae92315813855137d065f
 URL:		http://www.intellinuxwireless.org/
-%{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.22.1}
+%{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.22.10}
 BuildRequires:	rpmbuild(macros) >= 1.379
 #ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -32,7 +32,6 @@ development, and redistribution of this driver package.
 Summary:	Intel® PRO/Wireless 3945ABG Network Connection
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-Requires:	hotplug
 Requires:	iwlwifi-3945-ucode
 %{?with_dist_kerqnel:%requires_releq_kernel}
 Requires(post,postun):	/sbin/depmod
@@ -46,7 +45,6 @@ PRO/Wireles 3945ABG Network Connection.
 Summary:	Intel® Wireless WiFi Link 4965AG
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-Requires:	hotplug
 Requires:	iwlwifi-4965-ucode
 %{?with_dist_kernel:%requires_releq_kernel}
 Requires(post,postun):	/sbin/depmod
