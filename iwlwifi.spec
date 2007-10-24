@@ -3,7 +3,7 @@
 %bcond_without	kernel		# don't build kernel modules
 %bcond_with	verbose		# verbose build (V=1)
 #
-%define		_rel	1
+%define		_rel	2
 Summary:	Intel® Wireless WiFi Link 4965AGN and Intel® PRO/Wireless 3945ABG Network Connection
 Name:		iwlwifi
 Version:	1.1.18
@@ -63,8 +63,8 @@ sed -i -e 's#$(CONFIG_IWL3945)#m#g' -e 's#$(CONFIG_IWL4965)#m#g' origin/Makefile
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%install_kernel_modules -m origin/iwl3945 -d drivers/net/wireless
-%install_kernel_modules -m origin/iwl4965 -d drivers/net/wireless
+%install_kernel_modules -m origin/iwl3945 -d kernel/drivers/net/wireless
+%install_kernel_modules -m origin/iwl4965 -d kernel/drivers/net/wireless
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -83,10 +83,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n kernel%{_alt_kernel}-net-iwl3945
 %defattr(644,root,root,755)
-/lib/modules/%{_kernel_ver}/drivers/net/wireless/iwl3945.ko*
-#%{_sysconfdir}/modprobe.d/%{_kernel_ver}/iwl3945.conf
+/lib/modules/%{_kernel_ver}/kernel/drivers/net/wireless/iwl3945.ko*
 
 %files -n kernel%{_alt_kernel}-net-iwl4965
 %defattr(644,root,root,755)
-/lib/modules/%{_kernel_ver}/drivers/net/wireless/iwl4965.ko*
-#%{_sysconfdir}/modprobe.d/%{_kernel_ver}/iwl4965.conf
+/lib/modules/%{_kernel_ver}/kernel/drivers/net/wireless/iwl4965.ko*
