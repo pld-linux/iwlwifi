@@ -3,7 +3,7 @@
 %bcond_without	kernel		# don't build kernel modules
 %bcond_with	verbose		# verbose build (V=1)
 #
-%define		_rel	2
+%define		_rel	2.1
 Summary:	Intel® Wireless WiFi Link 4965AGN and Intel® PRO/Wireless 3945ABG Network Connection
 Name:		iwlwifi
 Version:	1.1.18
@@ -12,6 +12,7 @@ License:	mixed GPL v2 and BSD
 Group:		Base/Kernel
 Source0:	http://www.intellinuxwireless.org/iwlwifi/downloads/%{name}-%{version}.tgz
 # Source0-md5:	bb064d60815bd9ebdd3df32adb32c4f2
+Patch0:		%{name}-fix_rate_scale_issue.patch
 URL:		http://www.intellinuxwireless.org/
 %{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.22.10}
 BuildRequires:	rpmbuild(macros) >= 1.379
@@ -56,6 +57,7 @@ Link 4965AGN.
 
 %prep
 %setup -q
+%patch0 -p1
 sed -i -e 's#$(CONFIG_IWL3945)#m#g' -e 's#$(CONFIG_IWL4965)#m#g' origin/Makefile
 
 %build
