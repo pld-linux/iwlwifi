@@ -1,0 +1,22 @@
+--- ./origin/iwl-3945-rs.c.org	2007-10-17 06:59:36.000000000 +0200
++++ ./origin/iwl-3945-rs.c	2007-10-27 20:54:59.647344296 +0200
+@@ -42,7 +42,7 @@
+ 
+ #define IWL 3945
+ 
+-#include "../net/mac80211/ieee80211_rate.h"
++#include <net/ieee80211_rate.h>
+ 
+ #include "iwlwifi.h"
+ 
+--- ./origin/iwl-4965-rs.c.org	2007-10-27 20:54:11.018298941 +0200
++++ ./origin/iwl-4965-rs.c	2007-10-27 20:55:46.289625750 +0200
+@@ -41,7 +41,7 @@
+ 
+ #define IWL 4965
+ 
+-#include "../net/mac80211/ieee80211_rate.h"
++#include <net/ieee80211_rate.h>
+ 
+ #include "iwlwifi.h"
+ #include "iwl-helpers.h"
