@@ -15,7 +15,7 @@ Source0:	http://www.intellinuxwireless.org/iwlwifi/downloads/%{name}-%{version}.
 Patch0:		%{name}-fix_rate_scale_issue.patch
 Patch1:		%{name}-ieee80211_rate.patch
 URL:		http://www.intellinuxwireless.org/
-%{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build > 3:2.6.22.10-2}
+%{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build > 3:2.6.22.10-4}
 BuildRequires:	rpmbuild(macros) >= 1.379
 #ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
