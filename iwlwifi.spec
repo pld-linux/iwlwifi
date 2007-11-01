@@ -14,7 +14,7 @@ Source0:	http://www.intellinuxwireless.org/iwlwifi/downloads/%{name}-%{version}.
 # Source0-md5:	dd73d87fd0f0aecf7e680a289233fe3b
 Patch0:		%{name}-ieee80211_rate.patch
 URL:		http://www.intellinuxwireless.org/
-%{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build > 3:2.6.22.10-4}
+%{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-source = 3:2.6.22.10-4}
 BuildRequires:	rpmbuild(macros) >= 1.379
 #ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -57,7 +57,7 @@ Link 4965AGN.
 
 %prep
 %setup -q
-%patch0 -p1
+#%patch0 -p1
 sed -i -e 's#$(CONFIG_IWL3945)#m#g' -e 's#$(CONFIG_IWL4965)#m#g' origin/Makefile
 
 %build
