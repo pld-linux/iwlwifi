@@ -39,7 +39,7 @@ Requires(post,postun):	/sbin/depmod
 Requires:	module-init-tools >= 3.2.2-2
 
 %description -n kernel%{_alt_kernel}-net-iwl3945
-This package contains Linux kernel drivers for the IntelÂ
+This package contains Linux kernel drivers for the IntelÂ®
 PRO/Wireles 3945ABG Network Connection.
 
 %package -n kernel%{_alt_kernel}-net-iwl4965
