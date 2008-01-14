@@ -1,11 +1,13 @@
+#
 # Conditional build:
 %bcond_without	dist_kernel	# allow non-distribution kernel
 %bcond_without	kernel		# don't build kernel modules
 %bcond_with	verbose		# verbose build (V=1)
 #
 %define		_rel	1
-Summary:	Intel(R) Wireless WiFi Link 4965AGN and Intel(R) PRO/Wireless 3945ABG Network Connection
-Summary(en.UTF-8):	Intel® Wireless WiFi Link 4965AGN and Intel® PRO/Wireless 3945ABG Network Connection
+Summary:	Intel(R) Wireless WiFi Link 4965AGN and Intel(R) PRO/Wireless 3945ABG Network Connection driver
+Summary(en.UTF-8):	Intel® Wireless WiFi Link 4965AGN and Intel® PRO/Wireless 3945ABG Network Connection driver
+Summary(pl.UTF-8):	Sterowniki do układów bezprzewodowych Intel® 4965AGN i 3945ABG
 Name:		iwlwifi
 Version:	1.2.23
 Release:	%{_rel}
@@ -40,41 +42,61 @@ new microcode image which removes the need for the user space
 regulatory daemon. This change should help to simplify installation,
 development, and redistribution of this driver package.
 
+%description -l pl.UTF-8
+Projekt iwlwifi udostępnia sterownik wykorzystujący nowy podsystem
+mac80211, przeznaczony do układów bezprzewodowych Intel® Wireless WiFi
+Link 4965AGN and Intel® PRO/Wireless 3945ABG Network Connection.
+
+Oprócz używania nowego podsystemu mac80211 ten projekt wykorzystuje
+nowy obraz mikrokodu eliminujący potrzebę używania demona regulującego
+w przestrzeni użytkownika. Zmiana ta powinna ułatwić instalację,
+rozwijanie i redystrybucję tego pakietu.
+
 %package -n kernel%{_alt_kernel}-net-iwl3945
-Summary:	Intel(R) PRO/Wireless 3945ABG Network Connection
-Summary(en.UTF-8):	Intel® PRO/Wireless 3945ABG Network Connection
+Summary:	Intel(R) PRO/Wireless 3945ABG Network Connection driver
+Summary(en.UTF-8):	Intel® PRO/Wireless 3945ABG Network Connection driver
+Summary(pl.UTF-8):	Sterownik do układów bezprzewodowych Intel® PRO/Wireless 3945ABG Network Connection
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-Requires:	iwlwifi-3945-ucode
 %{?with_dist_kerqnel:%requires_releq_kernel}
 Requires(post,postun):	/sbin/depmod
+Requires:	iwlwifi-3945-ucode
 Requires:	module-init-tools >= 3.2.2-2
 
 %description -n kernel%{_alt_kernel}-net-iwl3945
-This package contains Linux kernel drivers for the Intel(R)
-PRO/Wireles 3945ABG Network Connection.
+This package contains Linux kernel driver for the Intel(R)
+PRO/Wireless 3945ABG Network Connection.
 
 %description -n kernel%{_alt_kernel}-net-iwl3945 -l en.UTF-8
-This package contains Linux kernel drivers for the Intel®
-PRO/Wireles 3945ABG Network Connection.
+This package contains Linux kernel driver for the Intel® PRO/Wireless
+3945ABG Network Connection.
+
+%description -n kernel%{_alt_kernel}-net-iwl3945 -l pl.UTF-8
+Ten pakiet zawiera sterownik jądra Linuksa do układów bezprzewodowych
+Intel® PRO/Wireless 3945ABG Network Connection.
 
 %package -n kernel%{_alt_kernel}-net-iwl4965
-Summary:	Intel(R) Wireless WiFi Link 4965AG
-Summary(en.UTF-8):	Intel® Wireless WiFi Link 4965AG
+Summary:	Intel(R) Wireless WiFi Link 4965AG driver
+Summary(en.UTF-8):	Intel® Wireless WiFi Link 4965AG driver
+Summary(pl.UTF-8):	Sterownik do układów bezprzewodowych Intel® Wireless WiFi Link 4965AG
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-Requires:	iwlwifi-4965-ucode
 %{?with_dist_kernel:%requires_releq_kernel}
 Requires(post,postun):	/sbin/depmod
+Requires:	iwlwifi-4965-ucode
 Requires:	module-init-tools >= 3.2.2-2
 
 %description -n kernel%{_alt_kernel}-net-iwl4965
-This package contains Linux kernel drivers for the Intel(R) Wireless WiFi
-Link 4965AGN.
+This package contains Linux kernel driver for the Intel(R) Wireless
+WiFi Link 4965AGN.
 
 %description -n kernel%{_alt_kernel}-net-iwl4965 -l en.UTF-8
-This package contains Linux kernel drivers for the Intel® Wireless WiFi
+This package contains Linux kernel driver for the Intel® Wireless WiFi
 Link 4965AGN.
+
+%description -n kernel%{_alt_kernel}-net-iwl4965 -l pl.UTF-8
+Ten pakiet zawiera sterownik jądra Linuksa do układów bezprzewodowych
+Intel® Wireless WiFi Link 4965AGN.
 
 %prep
 %setup -q
