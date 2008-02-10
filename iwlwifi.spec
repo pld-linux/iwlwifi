@@ -4,17 +4,17 @@
 %bcond_without	kernel		# don't build kernel modules
 %bcond_with	verbose		# verbose build (V=1)
 #
-%define		_rel	2
+%define		_rel	1
 Summary:	Intel(R) Wireless WiFi Link 4965AGN and Intel(R) PRO/Wireless 3945ABG Network Connection driver
 Summary(en.UTF-8):	Intel® Wireless WiFi Link 4965AGN and Intel® PRO/Wireless 3945ABG Network Connection driver
 Summary(pl.UTF-8):	Sterowniki do układów bezprzewodowych Intel® 4965AGN i 3945ABG
 Name:		iwlwifi
-Version:	1.2.23
+Version:	1.2.25
 Release:	%{_rel}
 License:	mixed GPL v2 and BSD
 Group:		Base/Kernel
 Source0:	http://www.intellinuxwireless.org/iwlwifi/downloads/%{name}-%{version}.tgz
-# Source0-md5:	0a6ae714ba5cb22d55f6b6fd2e29dc2d
+# Source0-md5:	e8726b20dd2f9457611019632709889a
 Patch0:		%{name}-ieee80211_rate.patch
 URL:		http://www.intellinuxwireless.org/
 %{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build > 3:2.6.22.10-4}
