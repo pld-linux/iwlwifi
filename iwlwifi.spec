@@ -4,7 +4,7 @@
 %bcond_without	kernel		# don't build kernel modules
 %bcond_with	verbose		# verbose build (V=1)
 #
-%define		_rel	4
+%define		_rel	5
 Summary:	Intel(R) Wireless WiFi Link 4965AGN and Intel(R) PRO/Wireless 3945ABG Network Connection driver
 Summary(en.UTF-8):	Intel® Wireless WiFi Link 4965AGN and Intel® PRO/Wireless 3945ABG Network Connection driver
 Summary(pl.UTF-8):	Sterowniki do układów bezprzewodowych Intel® 4965AGN i 3945ABG
