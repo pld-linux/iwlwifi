@@ -100,7 +100,7 @@ Intel® Wireless WiFi Link 4965AGN.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 sed -i -e 's#$(CONFIG_IWL3945)#m#g' -e 's#$(CONFIG_IWL4965)#m#g' origin/Makefile
 
 %build
